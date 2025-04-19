@@ -1,0 +1,1 @@
+console.log(    '%cmmmmmmmm',    `      font-family: Verdana, sans-serif;      font-size: 36px;      font-weight: bold;      background: linear-gradient(to bottom, #00000000 0px, #ffffff08);      color: white;      text-shadow: 0 0 10px rgba(127, 127, 127, .25);      padding: 20px 30px;      display: inline-block;    `  );
