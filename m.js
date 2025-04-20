@@ -77,25 +77,27 @@ const newHTML = `
 `;
 
 parentElement.innerHTML = newHTML;
-function setupPageSwitcher() {
+function setupPageSwitcher(){
+
     const wrapper1 = document.querySelector('.wrapper1');
     const wrapper2 = document.querySelector('.wrapper2');
     const slist = document.querySelector('.slist');
     const slist2 = document.querySelector('.slist2');
 
     if (!wrapper1 || !wrapper2 || !slist || !slist2) {
-        console.error('Элемент-ы не найден-ы');
+        console.error('не робатаит');
         return;
     }
 
-    function toggleVisibility(showElement, hideElement) {
+    function toggleVisibility(showElement, hideElement){
+
         showElement.classList.add('db');
         showElement.classList.remove('dn');
         hideElement.classList.add('dn');
         hideElement.classList.remove('db');
     }
 
-    function saveState() {
+    function saveState(){
         const state = {
             slist: {
                 hasDb: slist.classList.contains('db'),
@@ -108,7 +110,7 @@ function setupPageSwitcher() {
         };
         localStorage.setItem('pageSwitcherState', JSON.stringify(state));
     }
-    function loadState() {
+    function loadState(){
         const savedState = localStorage.getItem('pageSwitcherState');
         if (savedState) {
             const state = JSON.parse(savedState);
@@ -149,12 +151,6 @@ setupPageSwitcher();
 
 const button = document.querySelector('.gota-btn.bottom-btn.donut-features-btn');
 
-if (button) {
-    button.removeAttribute('style');
-    console.log('Атрибут style удален.');
-} else {
-    console.log('Элемент не найден.');
-}
 /*
 const removePolicyLinks = () => {
     const removeElementWithRetry = (parentSelector, targetSelector, retryDelay) => {
@@ -226,22 +222,98 @@ spectateButton.style.fontSize = '22px';
 
 
 }
+
+
+
+
+
+
+
+// Функция для получения цвета из цветового пикера
+function getColorFromPicker() {
+    const colorPreview = document.querySelector('.sp-preview-inner');
+    if (!colorPreview) return null;
+    
+    // Получаем вычисленный цвет фона
+    const bgColor = window.getComputedStyle(colorPreview).backgroundColor;
+    return bgColor;
+}
+
+// Функция обновления hover-эффекта
+function updateHoverStyle() {
+    const color = getColorFromPicker();
+    if (!color) return;
+    
+    const styleElement = document.getElementById('dynamic-hover-style') || 
+                         document.createElement('style');
+    styleElement.id = 'dynamic-hover-style';
+    
+    styleElement.textContent = `
+        .gota-btn:hover {
+            text-shadow: 0 0 4px ${color};
+            box-shadow: inset 0 0 0 0em rgb(255 255 255 / 0%);
+            transition: all .5s ease;
+        }
+        .penis {
+            color: ${color} !important;
+        }
+    `;
+    
+    if (!document.getElementById('dynamic-hover-style')) {
+        document.head.appendChild(styleElement);
+    }
+}
+
+// Наблюдатель за изменениями в цветовом пикере
+const colorPickerObserver = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+        if (mutation.type === 'attributes' && mutation.attributeName === 'style') {
+            updateHoverStyle();
+        }
+    });
+});
+
+// Инициализация
+const colorPreview = document.querySelector('.sp-preview-inner');
+if (colorPreview) {
+    colorPickerObserver.observe(colorPreview, {
+        attributes: true,
+        attributeFilter: ['style']
+    });
+    updateHoverStyle();
+}
+
+// Дополнительная проверка на случай динамической загрузки пикера
+const checkPickerInterval = setInterval(() => {
+    const preview = document.querySelector('.sp-preview-inner');
+    if (preview) {
+        clearInterval(checkPickerInterval);
+        colorPickerObserver.observe(preview, {
+            attributes: true,
+            attributeFilter: ['style']
+        });
+        updateHoverStyle();
+    }
+}, 200);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 const donutButton = document.querySelector('.gota-btn.bottom-btn.donut-features-btn');
 
 if (donutButton) {
     donutButton.textContent = 'Donut';
 }
-
-
-const mainPanel = document.querySelector('.main-content.main-divider.main-panel');
-
-if (mainPanel) {
-    const customOptions = document.createElement('div');
-    customOptions.className = 'custom-options';
-    customOptions.textContent = 'Это новый элемент с классом custom-options';
-    mainPanel.appendChild(customOptions);
-}
-
 
 function removeAttributesAfterDelay() {
     setTimeout(function() {
@@ -249,7 +321,6 @@ function removeAttributesAfterDelay() {
 
         if (bqpn) {
             bqpn.removeAttribute('data-balloon');
-            bqpn.removeAttribute('style');
             bqpn.removeAttribute('id');
             bqpn.removeAttribute('data-balloon-length');
         }
@@ -273,20 +344,141 @@ const observer = new MutationObserver((mutations) => {
     }
   });
 });
+// tippy.js нахуй
+document.querySelectorAll('.server-table-players[title]').forEach(el => {
+    el.setAttribute('data-tooltip', el.getAttribute('title'));
+    el.removeAttribute('title');
+    el.classList.add('m-tooltip');
+});
 
-const serverContent = document.getElementById('server-content');
-if (serverContent) {
-  removeTheads();
+const mainPanel = document.querySelector('.main-content.main-divider.main-panel');
 
-  observer.observe(serverContent, {
-    childList: true,
-    subtree: true
-  });
+if (mainPanel) {
+    const newContent = document.createElement('div');
+    newContent.className = 'mc1';
+    newContent.innerHTML = `
+        <a class="penis" href="https://discord.gg/gbs5e5FDM5" target="_blank" style="text-decoration: none; color: #ffffff80;">
+            ⁺‧₊˚ཐི⋆♱⋆ཋྀ˚₊‧⁺⁺‧₊˚ᄿ༺ཐིㅤ ㅤཋྀ༻ᄽ˚₊‧⁺⁺‧₊˚ཐི⋆♱⋆ཋྀ˚₊‧⁺
+        </a>
+        <div class="mc">
+            <div class="qs1">
+                <div class="m5 ms gota-btn">Menu Settings</div>
+            </div>
+            <div class="qs2">
+                <div class="m5 hs gota-btn">Hud Settings</div>
+            </div>
+        </div>
+    `;
+
+    mainPanel.appendChild(newContent);
 }
 
 var zxc = document.createElement("style");
 zxc.appendChild(document.createTextNode
 (`
+.mc {
+    display: flex
+;
+    background: #00000000;
+    flex-direction: row;
+    font-size: 15px;
+    padding: 5px 0px;
+    justify-content: center;
+}
+
+.mc1 {
+    display: flex
+;
+    flex-direction: column;
+    height: auto;
+    font-family: Montserrat;
+}
+
+.qs1 {
+    width: 160px;
+    padding: 0px 5px;
+    display: flex
+;
+    flex-direction: column;
+}
+.qs2 {
+    width: 160px;
+    padding: 0px 5px;
+    display: flex
+;
+    flex-direction: column;
+}
+.ms {
+    background: #00000000;
+}
+
+.m5 {
+    padding: 5px 10px !important;
+    text-align: center !important;
+    height: 30px !important;
+    border-radius: 3px !important;
+    align-content: space-around !important;
+}
+
+.hs{
+    background: #00000000;
+}
+
+.penis {
+    display: flex
+;
+    justify-content: center;
+    font-size: 15px;
+    font-weight: 100;
+    padding: 10px 0px;
+}
+#servers-body-eu{
+    background: #00000000 !important;
+}
+
+#servers-body-na{
+    background: #00000000 !important;
+}
+
+#servers-body-ap{
+    background: #00000000 !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 #account-actions .gota-btn {
     height: 40px;
@@ -319,18 +511,11 @@ min-width: 60px;
 font-size: 15px;
     cursor: pointer;
     position: relative;
-    overflow: hidden; /* Скрываем всё, что выходит за пределы кнопки */
+    overflow: hidden;
     transition: color 0.2s cubic-bezier(0.4, 0, 1, 1), text-shadow 0.2s cubic-bezier(0.4, 0, 1, 1);
     animation: .4s ease-in-out;
 }
 
-.gota-btn:hover {
-    color: #ffffffc4;
-    text-shadow: 0 0 4px #ffffff;
-    box-shadow: inset 0 0 0 0em rgb(255 255 255 / 0%);
-
-    transition: all .5s ease;
-}
 .gota-btn:hover::before {
     content: '';
     position: absolute;
@@ -341,8 +526,8 @@ font-size: 15px;
     background-color: #ffffff00 !important;
     background: repeating-linear-gradient(-30deg, #ffffff10, #ffffff10 50%, #ffffff10 100%);
     animation: slide-left .4s cubic-bezier(1, 0.26, 0.5, 1);
-    transform: skewX(-30deg); /* Наклоняем псевдоэлемент на 30 градусов влево */
-    transform-origin: top left; /* Устанавливаем точку трансформации в верхний левый угол */
+    transform: skewX(-30deg);
+    transform-origin: top left;
 }
 #account-actions .gota-btn {
     padding: 0px !important;
@@ -469,6 +654,7 @@ align-items: flex-end;
     margin-right: 10px !important;
     margin-left: 10px !important;
     width: 88%;
+    border-radius: 3px !important;
 }
 #name-box {
     display: block;
@@ -487,8 +673,8 @@ align-items: flex-end;
 }
 .menu-sub-bg {
     padding-top: 10px !important;
+    background: #00000000 !important;
 }
-
 
 
 
@@ -522,8 +708,8 @@ color: #b6172b !important;
     background-color: #ffffff00 !important;
     background: repeating-linear-gradient(-30deg, #db124110, #db124110 50%, #db124110 100%);
     animation: slide-left .4s cubic-bezier(1, 0.26, 0.5, 1);
-    transform: skewX(-30deg); /* Наклоняем псевдоэлемент на 30 градусов влево */
-    transform-origin: top left; /* Устанавливаем точку трансформации в верхний левый угол */
+    transform: skewX(-30deg);
+    transform-origin: top left;
 }
 
 #account-logout:hover span {
@@ -672,13 +858,88 @@ input[type="range"]:focus::-webkit-slider-thumb {
 
 
 
+// остальное
+.select-input {
+    width: auto;
+    height: 22px;
+    padding-left: 3px !important;
+    border-radius: 18px;
+    border: 1px solid rgb(0 0 0 / 0%);
+    font-size: 16px;
+    color: #dadada;
+    background-color: #80808080;
+    outline: none;
+}
 
+.m-tooltip {
+  position: relative;
+  cursor: pointer;
+}
 
+.m-tooltip:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  font-weight: 400 !important;
+  left: 0% !important;
+  top: -50% !important;
+  transform: translateX(90%) !important;
+  margin-left: 0px !important;
+  max-width: 400px;
+  min-width: 80px;
+  padding: 4px;
+  padding-left: 6px;
+  background: #0c0c0c80 !important;
+  backdrop-filter: blur(2px);
+  color: #dadada;
+  border-radius: 4px;
+  font-size: 14px;
+  z-index: 100;
+  white-space: pre-line;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+  opacity: 0;
+}
 
+.m-tooltip:hover::after {
+  opacity: 1;
+}
 
+.m-tooltip[data-tooltip-pos="top"]:hover::after {
+  bottom: 100%;
+  top: auto;
+}
 
+.m-tooltip[data-tooltip-pos="bottom"]:hover::after {
+  top: 100%;
+  bottom: auto;
+}
 
+.options-table .keybinds-btn {
+    border-radius: 45px;
+    width: 100%;
+    color: #dadada;
+    height: 22px;
+    padding: 0px 4px;
+    backdrop-filter: blur(2px);
+    background: #00000040;
+    overflow: hidden;
+    border: 1px solid rgb(0 0 0 / 0%);
+    margin-bottom: 2px;
+}
 
+.options-container select {
+    float: right;
+    width: auto;
+    background: #00000040;
+    padding-left: 5px;
+    backdrop-filter: blur(2px);
+    color: #dadada;
+    padding-right: 5px;
+    font-size: 14px;
+    height: 30px !important;
+    border-radius: 27px;
+    border: solid 1px #00000000;
+}
 
 
 
@@ -987,16 +1248,16 @@ font-family: Montserrat;
 .server-active {
   position: relative;
   background: #ffffff00 !important;
-  overflow: hidden; /* Скрываем всё, что выходит за границы */
+  overflow: hidden;
 }
 
 .server-active::after {
   content: '';
   position: absolute;
-  top: 30%; /* Расширяем за границы элемента, чтобы не было обрезки */
+  top: 30%;
   left: 0px;
   right: 0;
-  bottom: -50%; /* Расширяем за границы элемента */
+  bottom: -50%;
   background: linear-gradient(
     to left,
     #84848400 0%,
@@ -1006,7 +1267,7 @@ font-family: Montserrat;
   opacity: 0;
   animation: pulse-vertical 4s ease-in-out infinite;
   pointer-events: none;
-  z-index: 0; /* Убедимся, что анимация под контентом */
+  z-index: 0;
 }
 
 @keyframes pulse-vertical {
@@ -1038,9 +1299,11 @@ font-family: Montserrat;
 .server-table tbody {
     width: 100%;
     height: auto;
+    padding-bottom: 10px;
     border-radius: 0px;
     border-collapse: collapse;
 }
+    
 #server-content {
     height: auto !important;
 }
@@ -1070,7 +1333,6 @@ font-family: Montserrat;
     }
 }
 
-/* Фикс для изоляции анимации */
 .server-selected {
     position: relative;
     z-index: 1;
@@ -1107,14 +1369,14 @@ font-family: Montserrat;
 .server-table-players {
     width: 100px;
     white-space: nowrap;
-    font-weight: 100;
+    font-weight: 200;
     text-align: center;
     grid-column: 2 / 3;
 }
 .server-table-mode {
     width: 150px;
     white-space: nowrap;
-    font-weight: 200;
+    font-weight: 300;
     text-align: right;
     grid-column: 3 / 4;
 }
@@ -1230,10 +1492,6 @@ font-family: Montserrat;
     border-radius: 4px !important;
 }
 
-.sp-thumb-el:hover, .sp-thumb-el.sp-thumb-active {
-    border-color: #e08e13 !important;
-    transform: scale(1.1) !important;
-}
 
 .sp-input {
     background: #0c0c0c80 !important;
@@ -1242,11 +1500,6 @@ font-family: Montserrat;
     border-radius: 4px !important;
     padding: 6px !important;
     margin-bottom: 4px;
-}
-
-.sp-input:focus {
-    border-color: #e08e13 !important;
-    box-shadow: 0 0 5px rgba(224, 142, 19, 0.3) !important;
 }
 
 .sp-button .sp-choose{
