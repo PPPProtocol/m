@@ -257,6 +257,9 @@ function updateHoverStyle() {
         .penis {
             color: ${color} !important;
         }
+        .m5 {
+            color: ${color} !important;
+        }
     `;
     
     if (!document.getElementById('dynamic-hover-style')) {
@@ -384,6 +387,7 @@ zxc.appendChild(document.createTextNode
     font-size: 15px;
     padding: 5px 0px;
     justify-content: center;
+    border-radius: 3px !important;
 }
 
 .mc1 {
@@ -422,6 +426,7 @@ zxc.appendChild(document.createTextNode
 
 .hs{
     background: #00000000;
+    border-radius: 3px !important;
 }
 
 .penis {
@@ -881,6 +886,7 @@ input[type="range"]:focus::-webkit-slider-thumb {
   position: absolute;
   font-weight: 400 !important;
   left: 0% !important;
+    border: solid 1px #77777777;
   top: -50% !important;
   transform: translateX(90%) !important;
   margin-left: 0px !important;
@@ -941,7 +947,9 @@ input[type="range"]:focus::-webkit-slider-thumb {
     border: solid 1px #00000000;
 }
 
-
+.options-container {
+background-color: rgb(255 255 255 / 0%) !important;
+}
 
 
 
